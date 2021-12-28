@@ -1,0 +1,190 @@
+{% extends "admin/layout.html" %} 
+ {% block content %}
+ <script type="text/javascript">
+  google.charts.load("current", {packages:["corechart"]});
+  google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      
+        {% for key, value in data.items() %}
+            {% if value is string %}
+                ['{{ key }}', '{{ value }}'],
+            {% else %}
+                ['{{ key }}', {{ value }}],
+            {% endif %}
+        {% endfor %}
+    ]);
+  
+    var options = {
+      title: 'Blgs per Weed class',
+      is3D: true,
+      
+      pieStartAngle: 100
+      
+    };
+  
+    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+    chart.draw(data, options);
+  }
+</script>
+<!-- End pie chart -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">upload</i>
+                  </div>
+                  <p class="card-category">Total Blogs</p>
+                  <h3 class="card-title"> {{ records[0] }}
+                    <small>BG</small>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-danger">list</i>
+                    <a href="javascript:;">View all blogs</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">person</i>
+                  </div>
+                  <p class="card-category">Botanists</p>
+                  <h3 class="card-title">{{ records[1] }}</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">list</i> Access Botanists
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-danger card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">category</i>
+                  </div>
+                  <p class="card-category">Weed classes</p>
+                  <h3 class="card-title">{{ records[2] }}</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">list</i> View classes
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <p class="card-category">Moderators</p>
+                  <h3 class="card-title">{{ records[3] }}</h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">list</i> View Admins
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="col-md-8">
+              
+                  <div id="piechart_3d" style="width: 100%; height: 280px;"></div>
+                 
+            </div>
+            <div class="col-md-4">
+          
+                  <!-- <div id="piechart_3d2" style="width: 100%; height: 200px;"></div> -->
+          
+            </div>
+          </div>
+          <!-- End chart portion -->
+          <!-- start employee and classes module -->
+          <div class="row">
+            <!-- start classes portion -->
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-tabs card-header-primary">
+                  <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title">Weed Classes</span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                      <table class="table">
+                        <tbody>
+                          {% for i in weed_classes.each() %}
+                          <tr>
+                            <td> {{ i.key() }}  :</td>
+                            <!-- <td> {{ i.val()['description'] }}</td> -->
+                            <td class="td-actions text-right">
+                              <!-- <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </button> -->
+                             
+                            </td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end classes portion -->
+            <div class="col-lg-6 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Moderators </h4>
+                  <p class="card-category">These are the Moderators</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-warning">
+                   
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>City</th>
+                    </thead>
+                    <tbody>
+
+                      {% for i in admins.each() %}
+                      <tr>
+                     
+                        <td> {{ i.val()['username'] }}</td>
+                        <td>{{ i.val()['email'] }}</td>
+                        <td>{{ i.val()['city'] }}</td>
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endblock content %}

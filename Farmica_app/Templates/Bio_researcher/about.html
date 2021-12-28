@@ -1,0 +1,282 @@
+{% extends "Bio_researcher/layout.html" %} 
+{% block content %}
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <!-- <div class="slide-img bg-img" style="background-image: url(static/bio_researcher/img/bg-img/cover1.jpg);"></div> -->
+
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(static/bio_researcher/img/bg-img/cover1.jpg);">
+        <h2>ABOUT US</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+ <!-- ##### About Area Start ##### -->
+ <section class="about-us-area ">
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-5">
+                <!-- Section Heading -->
+                <div class="section-heading">
+                    <h2>ABOUT US</h2>
+                    <p>We are leading in the Weed Precision and Safe planting.</p>
+                </div>
+                <p> Farmica-Pak is one of the advance project leading by Farmica-Pak Group-3 Students of CUI wah.
+                    We Provide a high quality Web and Android Based Application for Weed detection 
+                    and Recommendation various type of herbecides.
+                </p>
+
+                <!-- Progress Bar Content Area -->
+                <div class="alazea-progress-bar mb-50">
+                    <!-- Single Progress Bar -->
+                    <div class="single_progress_bar">
+                        <p>Weeds Classes</p>
+                        <div id="bar1" class="barfiller">
+                            <div class="tipWrap">
+                                <span class="tip"></span>
+                            </div>
+                            <span class="fill" data-percentage="90"></span>
+                        </div>
+                    </div>
+
+                    <!-- Single Progress Bar -->
+                    <div class="single_progress_bar">
+                        <p>botanists</p>
+                        <div id="bar2" class="barfiller">
+                            <div class="tipWrap">
+                                <span class="tip"></span>
+                            </div>
+                            <span class="fill" data-percentage="{{ botanists }}"></span>
+                        </div>
+                    </div>
+
+                    <!-- Single Progress Bar -->
+                    <div class="single_progress_bar">
+                        <p>Blogs</p>
+                        <div id="bar3" class="barfiller">
+                            <div class="tipWrap">
+                                <span class="tip"></span>
+                            </div>
+                            <span class="fill" data-percentage="{{ blogs }}"></span>
+                        </div>
+                    </div>
+
+                   
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <img src="{{url_for('static',filename='bio_researcher/iii.jpg')}}" alt="" height="900rem">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="border-line"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### About Area End ##### -->
+<!-- ##### Service Area Start ##### -->
+<section class="our-services-area bg-gray section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2>OUR Portal</h2>
+                    <p>We provide the facilites of Weed Classification and Library to visit blogs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-between">
+            <div class="col-12 col-lg-5">
+                <div class="alazea-service-area mb-100">
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="{{url_for('static',filename='bio_researcher/img/core-img/s3.png')}}" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Weeds Library </h5>
+                            <p>We provide the very large weeds library which include australian weeds and thier related Blogs which is belong from world top botanists.</p>
+                        </div>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="300ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="{{url_for('static',filename='bio_researcher/img/core-img/b4.png')}}" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Weeds classifier</h5>
+                            <p>CNN classifier is Very Famaous in case of image classification,we provide a classifier for your weeds.
+                                you can pick image,classify with classifier and get the description of your weeds.</p>
+                        </div>
+                    </div>
+
+                    <!-- Single Service Area -->
+                    <div class="single-service-area d-flex align-items-center wow fadeInUp" data-wow-delay="500ms">
+                        <!-- Icon -->
+                        <div class="service-icon mr-30">
+                            <img src="{{url_for('static',filename='bio_researcher/img/core-img/b2.png')}}" alt="">
+                        </div>
+                        <!-- Content -->
+                        <div class="service-content">
+                            <h5>Discussion Platform</h5>
+                            <p>Botanists put thier knowledge on this portal to help the farmer.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <div class="alazea-video-area bg-overlay mb-100">
+                    <!-- <img src="{{url_for('static',filename='bio_researcher/img/bg-img/23.jpg')}}" alt="">
+                    <a href="https://www.youtube.com/watch?v=DLnl6XQPmu4&t=1s" class="video-icon">
+                        <i class="fa fa-play" aria-hidden="true"></i>
+                    </a> -->
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/DLnl6XQPmu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Our protal Area End ##### -->
+
+
+<!-- ##### Team Area Start ##### -->
+<section class="team-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Section Heading -->
+                <div class="section-heading text-center">
+                    <h2>OUR TEAM</h2>
+                    <p>A team of dedicated experienced professionals.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- Single Team Member Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member text-center mb-100">
+                    <!-- Team Member Thumb -->
+                    <div class="team-member-thumb">
+                        <img src="static/smr.jpeg" alt="">
+                        <!-- Social Info -->
+                        <div class="team-member-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member Info -->
+                    <div class="team-member-info mt-30">
+                        <h5>Dr. Mudassar raza</h5>
+                        <p>Supervisor &amp; Farmica-Pak</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member text-center mb-100">
+                    <!-- Team Member Thumb -->
+                    <div class="team-member-thumb">
+                        <img src="static/bio_researcher/img/bg-img/team2.png" alt="">
+                        <!-- Social Info -->
+                        <div class="team-member-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member Info -->
+                    <div class="team-member-info mt-30">
+                        <h5>Rabia Altaf</h5>
+                        <p>UI Designer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member text-center mb-100">
+                    <!-- Team Member Thumb -->
+                    <div class="team-member-thumb">
+                        <img src="static/bio_researcher/img/bg-img/team3.png" alt="">
+                        <!-- Social Info -->
+                        <div class="team-member-social-info">
+                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member Info -->
+                    <div class="team-member-info mt-30">
+                        <h5>Abdul Rafah</h5>
+                        <p>Android Developer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Team Member Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-team-member text-center mb-100">
+                    <!-- Team Member Thumb -->
+                    <div class="team-member-thumb">
+                        <img src="{{url_for('static',filename='ss.jpeg')}}" alt="" >
+                        <!-- Social Info -->
+                        <div class="team-member-social-info">
+                            <a href="https://www.facebook.com/waseemahmadcomsats" target="blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/was33m_code" target="blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/waseem-ahmad-499b29170/" target="blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <!-- Team Member Info -->
+                    <div class="team-member-info mt-30">
+                        <h5>Waseem Ahmed</h5>
+                        <p>Backend Developer</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ##### Team Area End ##### -->
+
+{% endblock content %}

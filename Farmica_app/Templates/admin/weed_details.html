@@ -1,0 +1,51 @@
+
+{% extends "admin/layout.html" %} 
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">{{ weed_detail.key() }}</h4>
+              <p class="card-category">Complete Description </p>
+            </div>
+            <div class="card-body">
+              <form action="{{url_for('update_weed')}}" method="POST">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Description:</label>
+                      <textarea class="form-control" id="order-notes" cols="30" rows="10" name="description" >{{ weed_detail.val()['description'] }}</textarea>
+                    </div>
+                  </div>
+                <input type="text" value="{{ weed_detail.key() }}" name="class" hidden>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right">Update</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card card-profile" >
+                <h5 class="card-category text-gray">Blogs Recommended</h5>
+              <div class="card-body" style="text-align: left;">
+               
+                {% if blog_list != "empty" %}
+                {% for i in blog_list.each() %}
+                <a href=""> {{ i.val()['title'] }} </a>
+                <hr>
+                {% endfor %}
+                {% else %}
+                <a href="#"> No blog available</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

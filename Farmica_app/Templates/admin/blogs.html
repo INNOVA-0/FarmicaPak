@@ -1,0 +1,54 @@
+{% extends "admin/layout.html" %} 
+ {% block content %}
+ <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Blogs Table</h4>
+                    <p class="card-category"> Table of blogs which is posted In Farmica-Pak</p>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class=" text-primary">
+                          <th>
+                          Editor
+                          </th>
+                          <th>
+                            Title
+                          </th>
+                          <th>
+                            date
+                          </th>
+                          
+                        </thead>
+                        <tbody>
+                          {% for i in blogs.each() %}
+                          <tr>
+                            <td>
+                              {{ i.val()['editor'] }}
+                            </td>
+                            <td>
+                              {{ i.val()['title'] }}
+                            </td>
+                            <td>
+                              {{ i.val()['date'] }}
+                            </td>
+                            
+                          </tr>
+                        {% endfor %}
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+ {% endblock content %}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weed Classifier </title>
+    <meta name="description"
+        content="Free, In-browser, Privacy friendly image to PDF convertor. Supports JPG/JPEG,PNG Image file formats and multiple image conversion at once. Your content stays secure in your browser itself.">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <link rel="icon" href="{{url_for('static',filename='bio_researcher/d.jpg')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='classifier/css/animate.min-4.1.0.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='classifier/css/bulma.min-0.9.0.css') }}">
+    <script defer src="js/pdfkit-standalone-0.10.0.js"></script>
+
+    <script async src="{{ url_for('static',filename='classifier/js/fa-5.3.1.js')}}"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static',filename='classifier/css/style.css')}}"> -->
+</head>
+
+<body>
+    <style>
+        /* image display css */
+        .iframe-container {
+            overflow: auto;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        .iframe-container iframe {
+            border: 0;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        /* responsavness */
+        @media screen and (max-width: 780px) {
+            .iframe-container {
+                padding-top: 5%;
+            }
+        }
+        .tile::-webkit-scrollbar {
+            width: 0 !important
+        }
+        
+        html::-webkit-scrollbar {
+            width: 0 !important
+        }
+        html {
+            scrollbar-width: none;
+        }
+        .logo-block {
+            display: inline-block;
+        }
+      
+        .filepond--item {
+            width: calc(50% - .5em);
+        }
+        .tile-container {
+            width: 100%;
+            margin: 9px;
+        }
+        .params-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            width: 100%;
+            height: auto;
+        }
+        .cq-range-div {
+            flex: 1 1 content;
+        }
+        #generate-pdf {
+            flex: 1 1 content;
+        }
+        .range-input {
+            vertical-align: middle;
+        }
+        #generate-pdf:hover {
+            transform: translateY(-2px);
+        }
+        .pattern {
+            background-color: #363636;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.21' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+    <section class="hero is-fullheight is-bold pattern">
+        <div class="hero-body">
+            <div class="tile-container">
+                <div class="tile is-ancestor">
+                    {% if filename == "null" %}
+                    <div class="tile is-5 is-vertical is-parent" style="max-height: 90vh;overflow: scroll;">
+                        <div class="tile is-child box animate__animated animate__zoomInDown animate__delay-1s">
+                            <div class="content">
+                                <h1 class="has-text-grey-darker has-text-weight-semibold">Weed Classifier</h1>
+                                <h6 class="has-text-grey-dark">Weeds classification Application    (visit <span ><a href="{{url_for('index')}}"> Farmica-Pak </a>) </span> </h6>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <span class="icon is-large has-text-info">
+                                        <i class="fas fa-images fa-3x"></i>
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <span class="icon is-medium has-text-success">
+                                        <i class="fas fa-angle-double-right fa-3x"></i>
+                                    </span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <span class="icon is-large has-text-info">
+                                        <i class="fas fa-df fa-3x"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile is-child box animate__animated animate__zoomInDown animate__delay-1s">
+                            <form action="{{url_for('classifier')}}"method="POST"enctype=multipart/form-data>
+                            <div class="params-div">
+                                <div class="cq-range-div">
+                                    <label for="compress-quality">Image classification : </label>
+                                </div>
+                                <button type="submit" class="button is-danger is-rounded is-light"
+                                    style="margin-left: 20px;"> <span class="icon">
+                                        <i class="fas fa-image"></i>
+                                    </span>
+                                    <span>Classify image</span></button>
+                            </div>
+                            <br>
+                            <div class="content">
+                                <input type="file" id="input_img" name="input_img"  accept="image/*" required >
+                                <!-- <img src="image.jpg" alt="data" id="input_img" > -->
+                            </form>
+                              <br>
+                              
+                              <p><b>Details about classes:</b></p> 
+                              
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                   <a href=" https://weeds.brisbane.qld.gov.au/weeds/chinee-apple" target="blank">   <p class="button is-danger is-rounded is-light " style="width:120px;">Chinee apple</p></a>  
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/lantana" target="blank">   <p class="button is-danger is-rounded is-light " style="width:120px;">Lantana</p></a>  
+
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/parkinsonia" target="blank">   <p class="button is-danger is-rounded is-light " style="width:120px;">Parkinsonia</p></a>  
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/siam-weed" target="blank">   <p class="button is-danger is-rounded is-light " style="width:120px;">siam weed</p></a>  
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row ">
+                                    <div class="col-lg-4">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/Parthenium" target="blank">   <p class="button is-danger is-rounded is-light">Parthenium</p></a>  
+                                      
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/Prickly-acacia" target="blank">   <p class="button is-danger is-rounded is-light">Prickly acacia</p></a>  
+                                       
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <a href="https://weeds.brisbane.qld.gov.au/weeds/Rubber-vine" target="blank">   <p class="button is-danger is-rounded is-light ">Rubber vine</p></a>  
+                                      
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">        
+                                    <div class="col-lg-12">
+                                        <a href="#" >   <p class="button is-danger is-rounded is-light ">Negative</p></a>  
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                           
+                      
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="tile is-5 is-vertical is-parent" style="max-height: 100vh; " >
+
+                        <div class="tile is-child box animate__animated animate__zoomInDown animate__delay-1s" style="max-height: 100vh;" >
+                            <div class="content" style="max-height: 70vh;scroll-snap-align: left;">
+                                <h1 class="has-text-grey-darker has-text-weight-semibold"><span><a href="{{url_for('back_to_classifier')}}"><button class="btn btn-danger" style="margin-right: 0%;background-color: rgb(136, 130, 122);">Back</button></a> </span> &nbsp Weed Classifier ({{weedclass}})</h1>
+                              
+                           <p style="max-height: 63vh;overflow: scroll;scroll-behavior: auto;" >  
+                             <span style="white-space: pre-line;">{{ desc }}
+                            
+                       <u>For more details follow the links: </u>
+                            {% if links != "not available" %}
+                                {% for i in links.each() %}
+                            <a href="{{url_for('blog',subject=weedclass+i.key()+i.val()['editor'])}}" target="_blank">http:\\127.0.0.1:5000\blog\+ {{ weedclass+i.key()+i.val()['editor'] }}</a>
+                                {% endfor %}
+                            {% else %}
+                            {{ links }}
+                            {% endif %}
+                        </span> 
+                        </p>      
+
+                        </div>
+                        </div>
+                        </div>
+                    {% endif %}
+                    <!-- image  -->
+                    <div class="tile is-7 is-parent">
+                        <div class="tile is-child box animate__animated animate__zoomInDown animate__delay-1s">
+                            <div class="iframe-container" style="max-height :500px;">
+                                {% if filename == "null" %}
+                                 <img src="{{ url_for('static',filename='bio_researcher/circle.jpg')}}" alt="image" width="100%" height="100%" >
+                                {% else %} 
+                                <img src="{{ url_for('static',filename='image/'+ filename)}}" alt="image" width="100%" height="100%" >
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

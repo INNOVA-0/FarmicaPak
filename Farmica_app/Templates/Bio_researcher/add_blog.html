@@ -1,0 +1,195 @@
+{% extends "Bio_researcher/layout.html" %} 
+
+ {% block content %}
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(static/bio_researcher/img/bg-img/24.jpg);">
+        <h2>Add new Blog</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}"><i class="fa fa-home"></i> Home</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Blog Content Area Start ##### -->
+<section class="blog-content-area section-padding-0-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Blog Posts Area -->
+            <div class="col-12 col-lg-8">
+                <div class="checkout_details_area clearfix">
+                    <h5>Blog Details</h5>
+                    <form action="{{url_for('add_blog')}}" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <label for="company">Title</label>
+                                <input type="text" class="form-control" id="address" value="" name="title" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="date">Current Time</label>
+                                <input type="date" class="form-control" id="data" value="" name="date" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="weed">Class of Weeds</label>
+                                <select class="custom-select d-block w-100" id="weed" name="weed_class" required>
+                                    {% for i in classes %}
+                                    <option value="{{ i }}">{{i}}</option>
+                                    {% endfor %}
+                                 
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="postcode">Cover Image</label>
+                                <input type="file" class="form-control" id="postcode" placeholder="select cover pic" name="cover_image" multiple accept="image/*" required>
+                            </div>
+                            <div class="col-md-12 mb-4">
+                                <label for="order-notes">Body of Blog</label>
+                                <textarea class="form-control" id="myTextarea" cols="30" rows="10" name="blog_body" placeholder="Notes about your order, e.g. special notes for delivery." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex align-items-center">
+                                    <!-- Single Checkbox -->
+                                 <button class="btn btn-primary" type="submit">Submit</button>
+                              <!-- &nbsp   <button class="btn btn-primary">Privew</button> -->
+                                    <!-- Single Checkbox -->
+             
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Blog Sidebar Area -->
+            <div class="col-12 col-sm-9 col-md-4">
+                <div class="post-sidebar-area">
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <!-- <div class="single-widget-area">
+                        <form action="#" method="get" class="search-form">
+                            <input type="search" name="search" id="widgetSearch" placeholder="Search...">
+                            <button type="submit"><i class="icon_search"></i></button>
+                        </form>
+                    </div> -->
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area">
+                        <!-- Author Widget -->
+                        <div class="author-widget">
+                            <div class="author-thumb-name d-flex align-items-center">
+                                <div class="author-thumb">
+                                    <img  src="{{url_for('static',filename='bio_researcher/face-icon-png-4282.png')}}" alt="">
+                                </div>
+                                <div class="author-name">
+                                    <h5>{{ user_data['username']}}</h5>
+                                    <p>{{ user_data['email']}}</p>
+                                    <p>Editor</p>
+                                </div>
+                            </div>
+                            <p>{{ user_data["about"]  }}</p>
+                            <div class="social-info">
+                                {% if session['useremail'] %}
+                                <a href="{{url_for('add_blog')}}"><i class="fa fa-plus" aria-hidden="true"></i> Add blog</a>
+                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit" aria-hidden="true"></i>Update</a>
+                                {% else %}
+                                
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area" >
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h4>Weeds Classes</h4>
+                        </div>
+                        <div style="height: 400px; overflow-y: scroll;">
+                        {% if blogs_classes %}
+                    {% for i in blogs_classes %}
+                    
+                        <!-- Single Latest Posts -->
+                        <div class="single-latest-post d-flex align-items-center">
+                            <div class="post-thumb">
+                                <img src="{{url_for('static',filename='bio_researcher/img/core-img/s3.png')}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="{{user_data['email']+ i[0] }}" class="post-title">
+                                    <h6>{{i[0]}}</h6>
+                                </a>
+                                <a href="#" class="post-date">blogs : {{i[1]}}</a>
+                            </div>
+                        </div>
+                       
+                        {% endfor %}
+                        {% else %}
+                        <h5>Blog not available!</h5>
+                        {% endif %}            
+                    </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- this is the update profile model -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLongTitle">Profile Setting </h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{url_for('update_researcher')}}" method="POST">
+            <div class="form-group">
+              <label for="email">User Name:</label>
+  
+              <input type="text" class="form-control"  value="{{ user_data['username']  }}"placeholder="Enter email" id="email" name="username">
+            </div>
+            <div class="form-group">
+   
+                <input type="email" class="form-control" value="{{ user_data['email']  }}" placeholder="Enter password" id="pwd" name="email" hidden>
+  
+              </div>
+            <div class="form-group">
+              <label for="pwd">Email:</label>
+              <input type="email" class="form-control" value="{{ user_data['email']  }}" placeholder="Enter password" id="pwd"  disabled>
+
+            </div>
+            <div class="form-group">
+                <label for="pwd">About me:</label>
+                <input type="text" class="form-control"value="{{ user_data['about']  }}"  id="pwd" name="aboutme" >
+                
+              </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+    <!-- end -->
+</section>
+
+
+<!-- ##### Blog Content Area End ##### -->
+{% endblock content%}

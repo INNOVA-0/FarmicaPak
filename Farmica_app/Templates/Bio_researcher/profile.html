@@ -1,0 +1,205 @@
+{% extends "Bio_researcher/layout.html" %} 
+
+ {% block content %}
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url( {{ url_for('static',filename='bio_researcher/img/bg-img/24.jpg')}})">
+        <h2>Researcher Profile</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}"><i class="fa fa-home"></i> Home</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">Profile (current class :{{subject}} )</li>
+                     
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Blog Content Area Start ##### -->
+<section class="blog-content-area section-padding-0-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Blog Posts Area -->
+            <div class="col-12 col-md-8">
+                <div class="row">
+                {% if blogs != 'empty' %}
+                    {% for i in blogs.each() %}
+                    {% if i.val()['editor'] == user_id %}
+                    <!-- Single Blog Post Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="single-blog-post mb-50">
+                            <div class="post-thumbnail mb-30">
+                                {% set myList = i.val()['image'] %}
+                                {% set blog_content = i.key() %}
+                                <a href="{{ url_for('blog',subject=subject+blog_content+user_id) }}"><img src=" {{url_for('static',filename='image/'+myList  )}}" alt=""></a>
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">
+                                    <h5>{{ i.val()['title'] }}</h5>
+                                </a>
+                                <div class="post-meta">
+                                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ i.val()['date'] }}</a>
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ i.val()['editor'] }}</a>
+                                    {% if session['useremail'] %}
+                                    <a href="{{url_for('delete_blog',key=subject+blog_content)}}"><i class="fa fa-remove" aria-hidden="true"></i> Delete </a>
+                                    {% endif %}
+
+                                </div>
+                                <!-- <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% endfor %}
+                    {% else %}
+                    <div class="col-12 col-lg-12 text-center">
+                        <div class="author-name">
+                            <h3>No blog Exist</h3>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+
+            <!-- Blog Sidebar Area -->
+            <div class="col-12 col-sm-9 col-md-4">
+                <div class="post-sidebar-area">
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area">
+                        <!-- Author Widget -->
+                        <div class="author-widget">
+                            <div class="author-thumb-name d-flex align-items-center">
+                                <div class="author-thumb">
+                                    {% if user_data['profileimg'] %}
+                                    <img  src="{{url_for('static',filename='profile_image/'+user_data['profileimg'])}}" alt="">
+                                    {% else %}
+                                    <img  src="{{url_for('static',filename='bio_researcher/face-icon-png-4282.png')}}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="author-name">
+                                    <h5>{{ user_data["username"]  }}</h5>
+                                    <p>{{ user_data["email"]  }}</p>
+                                    <p>Editor</p>
+                                </div>
+                            </div>
+                            
+                            <p>{{ user_data["about"]  }}</p>
+                            <div class="social-info">
+                                {% if session['useremail'] %}
+                                <a href="{{url_for('add_blog')}}"><i class="fa fa-plus" aria-hidden="true"></i> Add blog</a>
+                                <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit" aria-hidden="true"></i>Update</a>
+                                {% else %}
+                                
+                                {% endif %}
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h4>Weeds Classes</h4>
+                        </div>
+                    {% if classes %}
+                    {% for i in classes %}
+                    
+                        <!-- Single Latest Posts -->
+                        <div class="single-latest-post d-flex align-items-center">
+                            <div class="post-thumb">
+                                <img src="{{url_for('static',filename='bio_researcher/img/core-img/s3.png')}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                <a href="{{user_data['email']+ i[0] }}" class="post-title">
+                                    <h6>{{i[0]}}</h6>
+                                </a>
+                                <a href="#" class="post-date">blogs : {{i[1]}}</a>
+                            </div>
+                        </div>
+                       
+                        {% endfor %}
+                        {% else %}
+                        <h5>Blog not available!</h5>
+                        {% endif %}
+                       
+
+                    </div>
+
+                
+
+                   
+
+                     
+
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- this is the update profile model -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLongTitle">Profile Setting </h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      <div class="modal-body">
+        <form action="{{url_for('update_researcher')}}" method="POST" enctype=multipart/form-data>
+            <div class="form-group">
+        
+                <label for="profileimg">Profile image:</label>
+                 <input type="file" accept="image/*" class="form-control"  value="Update Profile image"placeholder="Select Profile Pic" title="Select Profile Image" id="profileimg" name="profileimg">
+
+                </div>
+            <div class="form-group">
+              <label for="email">User Name:</label>
+  
+              <input type="text" class="form-control"  value="{{ user_data['username']  }}"placeholder="Enter email" id="email" name="username">
+            </div>
+            <div class="form-group">
+   
+                <input type="email" class="form-control" value="{{ user_data['email']  }}" placeholder="Enter password" id="pwd" name="email" hidden>
+  
+              </div>
+            <div class="form-group">
+              <label for="pwd">Email:</label>
+              <input type="email" class="form-control" value="{{ user_data['email']  }}" placeholder="Enter password" id="pwd"  disabled>
+
+            </div>
+            <div class="form-group">
+                <label for="pwd">About me:</label>
+                <input type="text" class="form-control"value="{{ user_data['about']  }}"  id="pwd" name="aboutme" >
+                
+              </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- end -->
+</section>
+
+<!-- ##### Blog Content Area End ##### -->
+{% endblock content%}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Title -->
+    <title>Farmica-Pak &amp; Agriculture Platform</title>
+
+    <!-- Favicon -->
+    <!-- <link rel="icon" href="{{url_for('static',filename='bio_researcher/img/core-img/favicon.ico')}}"> -->
+    <link rel="icon" href="{{url_for('static',filename='bio_researcher/d.jpg')}}">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{{url_for('static',filename='bio_researcher/style.css')}}">
+<!-- advanced text editor -->
+<script src="{{url_for('static',filename= 'tinymce/tinymce.min.js' )}}"  ></script>
+<script>
+tinymce.init({
+    selector: '#myTextarea',
+    width: 600,
+    height: 300
+});
+</script>
+</head>
+
+<body>
+    
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- ***** Top Header Area ***** -->
+        <div class="top-header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="top-header-content d-flex align-items-center justify-content-between">
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta">
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="infodeercreative@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>Email: infodeercreative@gmail.com</span></a>
+                                <a href="#" data-toggle="tooltip" data-placement="bottom" title="+1 234 122 122"><i class="fa fa-phone" aria-hidden="true"></i> <span>Call Us: +1 234 122 122</span></a>
+                            </div>
+
+                            <!-- Top Header Content -->
+                            <div class="top-header-meta d-flex">
+                                <!-- Language Dropdown -->
+                                <!-- <div class="language-dropdown">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle mr-30" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">USA</a>
+                                            <a class="dropdown-item" href="#">UK</a>
+                                            <a class="dropdown-item" href="#">Bangla</a>
+                                            <a class="dropdown-item" href="#">Hindi</a>
+                                            <a class="dropdown-item" href="#">Spanish</a>
+                                            <a class="dropdown-item" href="#">Latin</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- Login -->
+                                {% if session['useremail'] %}
+                                <div class="login">
+                                    <a href="#" data-toggle="modal" data-target="#logoutModal"><i class="fa fa-edit" aria-hidden="true"></i>Logout</a>
+                                    <!-- <a href="{{url_for('logout')}}"><i class="fa fa-user" aria-hidden="true"></i> <span>Logout</span></a> -->
+                                </div>
+                                {% else %}
+                                <div class="login">
+                                    <a href="{{url_for('login')}}"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
+                                </div>
+                                {% endif %}
+                                <!-- Cart -->
+                                {% if session['useremail'] %}
+                                <div class="cart">
+                                    <a href="{{url_for('profile')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> <span>Profile </span></a>
+                                </div>
+                                {% else %}
+                                <div class="cart">
+                                    <a href="{{url_for('signup')}}"><i class="fa fa-user-circle" aria-hidden="true"></i> <span>SignUp </span></a>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Navbar Area ***** -->
+        <div class="alazea-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                        <!-- Nav Brand -->
+                        <a href="{{url_for('index')}}" class="nav-brand"><img src="{{url_for('static',filename='bio_researcher/logo.png')}}" alt="" width="200" height="100" style="padding-top: 10px;"></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Navbar Start -->
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="{{url_for('index')}}" style="text-decoration: none">Home</a></li>
+                                    <li><a href="{{url_for('weed_library')}}" style="text-decoration: none">Weed Library</a></li>
+                                  
+                                   
+                                    <li><a href="{{url_for('classifier')}}">Weeds & Classifier</a>
+                                        <ul class="dropdown" style="margin-left: 30px;">
+                                            <li><a href="{{url_for('classifier')}}">Weed Classifier</a></li>
+                                            <li><a href="{{url_for('weed_library')}}">Weeds Classes</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="{{url_for('weed_class',weedclass='Chinee apple')}}">Chinee apple</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Lantana')}}">Lantana</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Parkinsonia')}}">Parkinsonia</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Parthenium')}}">Parthenium</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Prickly acacia')}}">Prickly acacia</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Rubber vine')}}">Rubber vine</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='siam weed')}}">siam weed</a></li>
+                                                    <li><a href="{{url_for('weed_class',weedclass='Snake weed')}}">Snake weed</a></li>
+
+                                                </ul>
+                                            </li>
+                                           
+                                            <!-- <li><a href="blog.html">Blog</a>
+                                                <ul class="dropdown">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-post.html">Blog Details</a></li>
+                                                </ul>
+                                            </li> -->
+                                            <li><a href="https://www.intel.com/content/www/us/en/developer/articles/technical/inception-v3-deep-convolutional-architecture-for-classifying-acute-myeloidlymphoblastic.html" target="blank">about Inception-V3</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{url_for('about')}}" style="text-decoration: none">About Us</a></li>
+                                    <li><a href="{{url_for('contact')}}" style="text-decoration: none">Contact</a></li>
+                                </ul>
+
+                                <!-- Search Icon -->
+                                <div id="searchIcon">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                            <!-- Navbar End -->
+                        </div>
+                    </nav>
+
+                    <!-- Search Form -->
+                    <div class="search-form">
+                        <form action="{{url_for('weed_library')}}" method="POST">
+                            <input type="search" name="search" id="search" placeholder="Type Weed Class Name  &amp; press enter...">
+                            <button type="submit" class="d-none"></button>
+                        </form>
+                        <!-- Close Icon -->
+                        <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+        <!-- ***** Navbar Area ***** -->
+
+        {% block content %}
+
+        {% endblock %}
+
+        <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area bg-img" style="background-image:url({{ url_for('static',filename='bio_researcher/1234.jpg')}})">
+        <!-- Main Footer Area -->
+        <div class="main-footer-area">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="footer-logo mb-30">
+                                <a href="#"><img src="{{url_for('static',filename='bio_researcher/logo.png')}}" alt="" width="200" height="100" style="padding-top: 10px;"></a>
+                            </div>
+                            <p>The platform which provide the services of Weeds Precision.</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>QUICK LINK</h5>
+                            </div>
+                            <nav class="widget-nav">
+                                <ul>
+                                    
+                                    <li><a href="{{url_for('signup')}}">create account</a></li>
+                                    <li><a href="{{url_for('classifier')}}">Weed Classifier</a></li>
+                                    <li><a href="{{url_for('login')}}">login</a></li>
+                                    <li><a href="{{url_for('about')}}">About Us</a></li>
+                                    <li><a href="{{url_for('contact')}}">Contact Us</a></li>
+                    
+                                
+                                    <li><a href="http://cuiwah.edu.pk/">organization(CUI)</a></li>
+                                    <li><a href="http://ww3.comsats.edu.pk/faculty/FacultyDetails.aspx?Uid=19654">Project Supervisor</a></li>
+                                   
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        
+                    </div>
+
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="single-footer-widget">
+                            <div class="widget-title">
+                                <h5>CONTACT</h5>
+                            </div>
+
+                            <div class="contact-information">
+                                <p><span>Address:</span> COMSATS WAH,GT road, Wah Cantt ,Punjab</p>
+                                <p><span>Phone:</span> +1 234 122 122</p>
+                                <p><span>Email:</span> Farmica-Pak3group@gmail.com</p>
+                                <p><span>Open hours:</span> Mon - Sun: 8 AM to 9 PM</p>
+                                <p><span>Happy hours:</span> Sat: 2 PM to 4 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Area -->
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="border-line"></div>
+                    </div>
+                    <!-- Copywrite Text -->
+                    <div class="col-12 col-md-6">
+                        <div class="copywrite-text">
+                            <p>&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="#" target="_blank">Farmica-Pak</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                        </div>
+                    </div>
+                    <!-- Footer Nav -->
+                    <div class="col-12 col-md-6">
+                        <div class="footer-nav">
+                            <nav>
+                                <ul>
+                                    <li><a href="{{url_for('index')}}" style="text-decoration: none">Home</a></li>
+                                    <li><a href="{{url_for('classifier')}}" style="text-decoration: none">Weed Classifier</a></li>
+                                    <li><a href="{{url_for('about')}}" style="text-decoration: none">About</a></li>
+                                    <li><a href="{{url_for('weed_library')}}" style="text-decoration: none">Weed Library</a></li>
+                                    <li><a href="{{url_for('contact')}}" style="text-decoration: none">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    
+<!-- this is the update profile model -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLongTitle"> Logout Botanist</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      <div class="modal-body">
+        Do you want to logout!
+      </div>
+      <div class="modal-footer">
+      <a href="{{url_for('logout')}}"> <button type="button" class="btn btn-secondary" >LogOut</button></a> 
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+     </div>
+    </div>
+   </div>
+
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="{{url_for('static',filename='bio_researcher/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <!-- Popper js -->
+    <!-- <script src="{{url_for('static',filename='bio_researcher/js/bootstrap/popper.min.js')}}"></script> -->
+    <!-- Bootstrap js -->
+    <script src="{{url_for('static',filename='bio_researcher/js/bootstrap/bootstrap.min.js')}}"></script>
+    <!-- All Plugins js -->
+    <script src="{{url_for('static',filename='bio_researcher/js/plugins/plugins.js')}}"></script>
+    <!-- Active js -->
+    <!-- for reloading page -->
+    <script src="{{url_for('static',filename='bio_researcher/js/active.js')}}"></script>
+</body>
+
+</html>

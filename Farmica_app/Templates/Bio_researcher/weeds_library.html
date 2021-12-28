@@ -1,0 +1,135 @@
+{% extends "Bio_researcher/layout.html" %} 
+
+ {% block content %}
+   <!-- ##### Breadcrumb Area Start ##### -->
+   <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image:url({{ url_for('static',filename='bio_researcher/img/bg-img/24.jpg')}})">
+        <h2>Weeds Library </h2>
+       
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Library ({{ current_class }})</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Blog Area Start ##### -->
+<section class="alazea-blog-area mb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <div class="row">
+                {% if blogs != 'empty' %}
+                    {% if searching == 'no' %}
+                    {% for i in blogs.each() %}
+                    <!-- Single Blog Post Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="single-blog-post mb-50">
+                            <div class="post-thumbnail mb-30">
+                                {% set myList = i.val()['image'] %}
+                                {% set editor = i.val()['editor'] %}
+                                {% set blog_content = i.key() %}
+                                <a href="{{url_for('blog',subject=current_class+blog_content+editor)}}"><img src="{{url_for('static',filename='image/'+myList)}}" alt="" width="100%"></a>
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">
+                                    <h5>{{ i.val()['title'] }}</h5>
+                                </a>
+                                <div class="post-meta">
+                                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ i.val()['date'] }}</a>
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ i.val()['editor'] }}</a>
+                                </div>
+                                <!-- <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    {% for i in blogs %}
+                    <!-- Single Blog Post Area -->
+                    <div class="col-12 col-lg-6">
+                        <div class="single-blog-post mb-50" style="min-height: 1200px;object-fit: cover;">
+                            <div class="post-thumbnail mb-30">
+                                {% set myList = i[0]['image'] %}
+                                {% set editor = i[0]['editor'] %}
+                                {% set blog_content = i[1] %}
+                                <a href="{{url_for('blog',subject=current_class+blog_content+editor)}}"><img src="{{url_for('static',filename='image/'+myList)}}" alt="" width="100%" height="100%" style="width: auto !important;height: 140px !important;"></a>
+                            </div>
+                            <div class="post-content">
+                                <a href="single-post.html" class="post-title">
+                                    <h5>{{ i[0]['title'] }}</h5>
+                                </a>
+                                <div class="post-meta">
+                                    <a href="#"><i class="fa fa-clock-o" aria-hidden="true"></i> {{ i[0]['date'] }}</a>
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ i[0]['editor'] }}</a>
+                                </div>
+                                <!-- <p class="post-excerpt">Integer luctus diam ac scerisque consectetur. Vimus ottawas nec lacus sit amet. Aenean interdus mid vitae.</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                {% else %}
+                <h4 class="bg-danger">{{ current_class }} Weed class is not Available </h4>
+                {% endif %}
+                </div>
+
+            </div>
+            
+            <div class="col-12 col-md-4">
+                <div class="post-sidebar-area">
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area">
+                        <form action="{{url_for('weed_library_search')}}" method="POST" class="search-form">
+                            <input type="text" value="{{ current_class }}" name="curent_class" hidden>
+                            <input type="search" name="search" id="widgetsearch" placeholder="Search by title of blog..." required>
+                            <button type="submit"><i class="icon_search"></i></button>
+                        </form>
+                    </div>
+
+                    <!-- ##### Single Widget Area ##### -->
+                    <div class="single-widget-area">
+                        <!-- Title -->
+                        <div class="widget-title">
+                            <h4>Weed Classes</h4>
+                        </div>
+                        {% for i in classes %}
+                        <!-- Single Latest Posts -->
+                        <div class="single-latest-post d-flex align-items-center">
+                            <div class="post-thumb">
+                                <img src="{{url_for('static',filename='bio_researcher/img/core-img/s3.png')}}" alt="">
+                            </div>
+                            <div class="post-content">
+                                {% if searching =='no' %}
+                                <a href="{{i[0]}}" class="post-title">
+                                    <h6>{{i[0]}}</h6>  </a>
+                                    {% else %}
+                                    <a href="/weed_library/{{i[0]}}" class="post-title">
+                                        <h6>{{i[0]}}</h6>  </a>
+                              {% endif %}
+                                <a href="#" class="post-date">blogs : {{ i[1] }}</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Blog Area End ##### -->
+
+ {% endblock content %}

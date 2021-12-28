@@ -1,0 +1,378 @@
+{% extends "Bio_researcher/layout.html" %} 
+
+ {% block content %}
+ 
+ <!-- ##### Breadcrumb Area Start ##### -->
+ <div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image:url( {{ url_for('static',filename='bio_researcher/img/bg-img/24.jpg')}})">
+        <h2>About {{ weed }}</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{url_for('index')}}"><i class="fa fa-home"></i> Home</a></li>
+                        <!-- <li class="breadcrumb-item"><a href="{{url_for('profile')}}">Profile</a></li> -->
+                        <li class="breadcrumb-item active" aria-current="page"> weed : {{ weed }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Breadcrumb Area End ##### -->
+
+<!-- ##### Blog Content Area Start ##### -->
+<section class="blog-content-area ">
+    <div class="container">
+        {% if weed=="Lantana" %}
+        <div class="row mb-100">
+            <!-- Blog Posts Area -->
+            <div class="col-4 col-md-4">
+              
+                <div class="blog-posts-area">
+                    <!-- Post Details Area -->
+                    <div class="single-post-details-area">
+                        <div class="post-content">
+                            
+                            <div class="post-thumbnail mb-30">
+                                <img src="{{ url_for('static',filename='weeclasses/lantana.jpg') }}" alt="nothin" width="299px" height="299px">
+                            </div>
+                            
+                            <div class="row mb-30">
+                                <div class="col-lg-12">
+                                 
+                                <strong> Weed Name : </strong> <i>Lantana</i><br>
+                                <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                                <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                               <strong>COMMON NAMES:</strong><br>
+                               <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                                </div>
+                            </div>
+                           
+                  </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-8 col-md-8">
+                    <strong>Introduction :</strong><br>
+                    <div class="text-justify">
+                        A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                    </div>
+                    <Br>
+                    <strong> ORIGIN:</strong><br>
+                    <div class="text-justify">
+                        Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                    </div>
+                    <Br>
+                    <strong> KNOWN DISTRIBUTION :</strong><br>
+                    <div class="text-justify">
+                        This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                    </div>
+                    <br>
+                    <strong> Impact and control methods:</strong><br>
+                    <div class="text-justify">
+                        Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                        
+                    </div>
+
+            </div>
+
+        
+        </div>
+     
+         {% elif weed=="Chinee apple" %} 
+         <div class="row mb-100">
+            <!-- Blog Posts Area -->
+            <div class="col-4 col-md-4">
+              
+                <div class="blog-posts-area">
+                    <!-- Post Details Area -->
+                    <div class="single-post-details-area">
+                        <div class="post-content">
+                            
+                            <div class="post-thumbnail mb-30">
+                                <img src="{{ url_for('static',filename='weeclasses/chinee.jpg') }}" alt="nothin" width="299px" height="299px">
+                            </div>
+                            
+                            <div class="row mb-30">
+                                <div class="col-lg-12">
+                                 
+                                <strong> Weed Name : </strong> <i>Lantana</i><br>
+                                <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                                <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                               <strong>COMMON NAMES:</strong><br>
+                               <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                                </div>
+                            </div>
+                           
+                  </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-8 col-md-8">
+                    <strong>Introduction :</strong><br>
+                    <div class="text-justify">
+                        A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                    </div>
+                    <Br>
+                    <strong> ORIGIN:</strong><br>
+                    <div class="text-justify">
+                        Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                    </div>
+                    <Br>
+                    <strong> KNOWN DISTRIBUTION :</strong><br>
+                    <div class="text-justify">
+                        This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                    </div>
+                    <br>
+                    <strong> Impact and control methods:</strong><br>
+                    <div class="text-justify">
+                        Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                        
+                    </div>
+
+            </div>
+
+        
+        </div>
+
+             
+        {% elif weed=="Parkinsonia" %} 
+        <div class="row mb-100">
+           <!-- Blog Posts Area -->
+           <div class="col-4 col-md-4">
+             
+               <div class="blog-posts-area">
+                   <!-- Post Details Area -->
+                   <div class="single-post-details-area">
+                       <div class="post-content">
+                           
+                           <div class="post-thumbnail mb-30">
+                               <img src="{{ url_for('static',filename='weeclasses/parkinsonia.jpg') }}" alt="nothin" width="299px" height="299px">
+                           </div>
+                           
+                           <div class="row mb-30">
+                               <div class="col-lg-12">
+                                
+                               <strong> Weed Name : </strong> <i>Lantana</i><br>
+                               <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                               <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                              <strong>COMMON NAMES:</strong><br>
+                              <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                               </div>
+                           </div>
+                          
+                 </div>
+                   </div>
+               </div>
+               
+           </div>
+           <div class="col-8 col-md-8">
+                   <strong>Introduction :</strong><br>
+                   <div class="text-justify">
+                       A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                   </div>
+                   <Br>
+                   <strong> ORIGIN:</strong><br>
+                   <div class="text-justify">
+                       Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                   </div>
+                   <Br>
+                   <strong> KNOWN DISTRIBUTION :</strong><br>
+                   <div class="text-justify">
+                       This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                   </div>
+                   <br>
+                   <strong> Impact and control methods:</strong><br>
+                   <div class="text-justify">
+                       Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                       
+                   </div>
+
+           </div>
+
+       
+       </div>
+       {% elif weed=="Parthenium" %} 
+        <div class="row mb-100">
+           <!-- Blog Posts Area -->
+           <div class="col-4 col-md-4">
+             
+               <div class="blog-posts-area">
+                   <!-- Post Details Area -->
+                   <div class="single-post-details-area">
+                       <div class="post-content">
+                           
+                           <div class="post-thumbnail mb-30">
+                               <img src="{{ url_for('static',filename='weeclasses/parkinsonia.jpg') }}" alt="nothin" width="299px" height="299px">
+                           </div>
+                           
+                           <div class="row mb-30">
+                               <div class="col-lg-12">
+                                
+                               <strong> Weed Name : </strong> <i>Lantana</i><br>
+                               <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                               <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                              <strong>COMMON NAMES:</strong><br>
+                              <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                               </div>
+                           </div>
+                          
+                 </div>
+                   </div>
+               </div>
+               
+           </div>
+           <div class="col-8 col-md-8">
+                   <strong>Introduction :</strong><br>
+                   <div class="text-justify">
+                       A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                   </div>
+                   <Br>
+                   <strong> ORIGIN:</strong><br>
+                   <div class="text-justify">
+                       Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                   </div>
+                   <Br>
+                   <strong> KNOWN DISTRIBUTION :</strong><br>
+                   <div class="text-justify">
+                       This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                   </div>
+                   <br>
+                   <strong> Impact and control methods:</strong><br>
+                   <div class="text-justify">
+                       Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                       
+                   </div>
+
+           </div>
+
+       
+       </div>
+       
+       {% elif weed=="Prickly Acacia" %} 
+       <div class="row mb-100">
+          <!-- Blog Posts Area -->
+          <div class="col-4 col-md-4">
+            
+              <div class="blog-posts-area">
+                  <!-- Post Details Area -->
+                  <div class="single-post-details-area">
+                      <div class="post-content">
+                          
+                          <div class="post-thumbnail mb-30">
+                              <img src="{{ url_for('static',filename='weeclasses/prickly.jpg') }}" alt="nothin" width="299px" height="299px">
+                          </div>
+                          
+                          <div class="row mb-30">
+                              <div class="col-lg-12">
+                               
+                              <strong> Weed Name : </strong> <i>Lantana</i><br>
+                              <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                              <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                             <strong>COMMON NAMES:</strong><br>
+                             <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                              </div>
+                          </div>
+                         
+                </div>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="col-8 col-md-8">
+                  <strong>Introduction :</strong><br>
+                  <div class="text-justify">
+                      A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                  </div>
+                  <Br>
+                  <strong> ORIGIN:</strong><br>
+                  <div class="text-justify">
+                      Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                  </div>
+                  <Br>
+                  <strong> KNOWN DISTRIBUTION :</strong><br>
+                  <div class="text-justify">
+                      This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                  </div>
+                  <br>
+                  <strong> Impact and control methods:</strong><br>
+                  <div class="text-justify">
+                      Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                      
+                  </div>
+
+          </div>
+
+      
+      </div>
+      {% elif weed == "Rubber Vine" %} 
+       <div class="row mb-100">
+          <!-- Blog Posts Area -->
+          <div class="col-4 col-md-4">
+            
+              <div class="blog-posts-area">
+                  <!-- Post Details Area -->
+                  <div class="single-post-details-area">
+                      <div class="post-content">
+                          
+                          <div class="post-thumbnail mb-30">
+                              <img src="{{ url_for('static',filename='weeclasses/prickly.jpg') }}" alt="nothin" width="299px" height="299px">
+                          </div>
+                          
+                          <div class="row mb-30">
+                              <div class="col-lg-12">
+                               
+                              <strong> Weed Name : </strong> <i>Lantana</i><br>
+                              <strong> FAMILY : </strong> <i>Verbenaceae</i><br>
+                              <strong> FLOWERING TIME : </strong> <i>Year round</i><br>
+                             <strong>COMMON NAMES:</strong><br>
+                             <i>Also known as: lantana, common lantana, curse of India, kamara lantana,</i>
+                              </div>
+                          </div>
+                         
+                </div>
+                  </div>
+              </div>
+              
+          </div>
+          <div class="col-8 col-md-8">
+                  <strong>Introduction :</strong><br>
+                  <div class="text-justify">
+                      A rough-textured and usually prickly shrub with oppositely arranged leaves. Its dense flower clusters consist of numerous small tubular flowers (9-14 mm long and 4-10 mm across). These flower clusters are borne on stalks originating in the leaf forks. The flowers can be a wide variety of colours (i.e. white, yellow, orange, red, pink or multi-coloured). Its mature fruit (5-8 mm across) are glossy in appearance and black, purplish-black or bluish-black in colour.
+                  </div>
+                  <Br>
+                  <strong> ORIGIN:</strong><br>
+                  <div class="text-justify">
+                      Native to Mexico, Central America, the Caribbean and tropical South America. Note: The lantana populations that have become naturalised in Australia and other parts of the world are thought to have originated from various cultivated hybrids
+                  </div>
+                  <Br>
+                  <strong> KNOWN DISTRIBUTION :</strong><br>
+                  <div class="text-justify">
+                      This species is widely distributed and very common in the coastal and sub-coastal areas of eastern Australia from Cairns south to the central coast of New South Wales. It is also present in Western Australia, in the northern parts of the Northern Territory, in Victoria, in south-eastern South Australia, on Lord Howe Island and on Norfolk Island. Also widely naturalised in other parts of the world, including on many Pacific Islands, in Africa, in India and in south-eastern Asia.
+                  </div>
+                  <br>
+                  <strong> Impact and control methods:</strong><br>
+                  <div class="text-justify">
+                      Lantana (Lantana camara) is one of the 20 Weeds of National Significance (WoNS) in Australia. It is regarded as a significant environmental weed in Queensland, New South Wales, and on Norfolk Island, and as a potentially significant environmental weed in Western Australia and the Northern Territory. This species is actively managed by community groups in Queensland and New South Wales, and was recently ranked as the most serious enviromental weed in south-eastern Queensland.It is also listed in the Global Invasive Species Database (GISD) and is regarded to be in the top 100 of the worlds worst invasive alien species.
+                      
+                  </div>
+
+          </div>
+
+      
+      </div>
+         {% endif %}
+    </div>
+
+
+    
+</section>
+<!-- ##### Blog Content Area End ##### -->
+{% endblock content %}

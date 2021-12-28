@@ -1,0 +1,63 @@
+{% extends "admin/layout.html" %} 
+ {% block content %}
+ <div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Botanists List</h4>
+                    <p class="card-category">This is the  Botanists list. </p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
+                       
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th style="text-align:center">
+                        Total blogs
+                        </th>
+                        <th style="text-align:center">
+                            Delete
+                        </th>
+                        
+                        </thead>
+                        <tbody>
+                           
+                            {% for i in botanists %}
+                        <tr>
+                            <td>
+                           {{ i[1] }}
+                           
+                            </td>
+                            <td>
+                                {{ i[2] }}
+                            </td>
+                            <td style="text-align:center">
+                                {{ i[3] }}
+                            </td>
+                            <td style="text-align:center">
+                       <a href="#"> <button class="btn btn-primary" style="background-color: red;">Delete</button></a>  
+                            </td>
+                            <!-- <td style="text-align:center">
+                                <a href="#">    <button class="btn btn-primary"> View Blogs</button></a>  
+                            </td> -->
+                            
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ {% endblock content %}

@@ -1,0 +1,103 @@
+
+{% extends "admin/layout.html" %} 
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Edit Profile</h4>
+              <p class="card-category">Complete your profile</p>
+            </div>
+            <div class="card-body">
+              <form action="{{ url_for('profile_update') }}" method="POST">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Company:</label>
+                      <input type="text" class="form-control" value="Farmica-Pak" disabled>
+                    </div>
+                  </div>
+                
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">User name</label>
+                      <input type="text" class="form-control" value="{{ profile.val()['username'] }}" name="username">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Email address</label>
+                      <input type="email" class="form-control" value="{{ profile.val()['email'] }}" disabled name="email">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Adress</label>
+                      <input type="text" class="form-control" value="{{ profile.val()['address'] }}" name="address">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">City</label>
+                      <input type="text" class="form-control" value="{{ profile.val()['city'] }}" name="city">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Country</label>
+                      <input type="text" class="form-control" value="{{ profile.val()['country'] }}" name="country">
+                    </div>
+                  </div>
+    
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>About Me</label>
+                      <div class="form-group">
+                        <!-- <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label> -->
+                        <input class="form-control" rows="5" value="{{ profile.val()['aboutme'] }}" name="aboutme">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-profile">
+            <div class="card-avatar">
+              <a href="javascript:;">
+                <img class="img" src="{{url_for('static',filename='admin/img/faces/marc.jpg')}}" />
+              </a>
+            </div>
+            <div class="card-body">
+              <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+            {% if profile %}
+              <h4 class="card-title">{{ profile.val()['username'] }}</h4>
+            {% endif %}
+              <p class="card-description">
+                {{ profile.val()['aboutme'] }}
+              </p>
+              {% if profile.val()['role'] == 'super' %}
+            <a href="{{ url_for('add_admin') }}">  <button class="btn btn-primary btn-round">Add New Admin</button></a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock content %}

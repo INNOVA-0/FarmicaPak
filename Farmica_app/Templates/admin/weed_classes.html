@@ -1,0 +1,45 @@
+{% extends "admin/layout.html" %} 
+ {% block content %}
+ <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Weeds Classes </h4>
+              <p class="card-category">Weeds classes are listed bellow which is used in classifier.</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive table-upgrade">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Weed Class</th>
+                      <th class="text-center">Update</th>
+                     
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in weeds.each() %}
+                    <tr>
+                      <td>{{ i.key() }}</td>
+                      <td class="text-center">
+                       <a href="{{url_for('view_weed',weed=i.key())}}"> <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i></a>
+                      </button></td>
+                     
+                      
+                    </tr>
+                    {% endfor %}
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ {% endblock content %}
